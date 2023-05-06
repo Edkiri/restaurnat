@@ -11,7 +11,8 @@ footer {
   box-shadow: 0px -2px 10px rgba(255,255,255,0.3);
 }
 a,
-p {
+p,
+label {
   text-decoration: none;
   color: white;
 }

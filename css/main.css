@@ -16,10 +16,20 @@ label {
   text-decoration: none;
   color: white;
 }
+li {
+  list-style: none;
+}
 .action-button {
   background-color: var(--color-main);
   /* This is a color variable defined by bootstrap */
   color: var(--bs-body-bg);
+  border-radius: 4px;
+  border: none;
+  padding: 4px 8px;
+  font-weight: bold;
+}
+.action-button:active {
+  opacity: 0.5;
 }
 .cart-toggle-button-container {
   max-height: 134px;

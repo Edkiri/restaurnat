@@ -14,13 +14,25 @@ class CartSubject extends Subject {
         quantity: 1,
       });
     }
+    const itemsJson = JSON.stringify(this.items);
+    sessionStorage.setItem("cartItems", itemsJson);
     super.notify(this);
   }
 
   clearCart() {
-    if(!this.items.length) return;
+    if (!this.items.length) return;
     this.items = [];
+    sessionStorage.clear();
     super.notify(this);
+  }
+
+  checkSessionStorage() {
+    const cartItemsJson = sessionStorage.getItem("cartItems");
+    const cartItems = JSON.parse(cartItemsJson);
+    if (cartItems) {
+      this.items = cartItems;
+      super.notify(this);
+    }
   }
 }
 

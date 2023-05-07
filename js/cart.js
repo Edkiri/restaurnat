@@ -1,4 +1,3 @@
-
 class CartSubject extends Subject {
   constructor() {
     super();
@@ -15,6 +14,12 @@ class CartSubject extends Subject {
         quantity: 1,
       });
     }
+    super.notify(this);
+  }
+
+  clearCart() {
+    if(!this.items.length) return;
+    this.items = [];
     super.notify(this);
   }
 }
@@ -41,5 +46,16 @@ class CartListObserver {
       `;
       this.cartList.appendChild(newListItem);
     });
+    const total = subject.items.reduce((acc, cur) => {
+      const price = parseFloat(cur.price.split(" ")[0]);
+      return acc + cur.quantity * price;
+    }, 0);
+    const totalContainer = document.createElement("div");
+    totalContainer.innerHTML = `<span class="d-inline-block pt-4 fs-3 w-100 text-center">${total.toFixed(
+      2
+    )} €</span>`;
+    if (total) {
+      this.cartList.appendChild(totalContainer);
+    }
   }
 }

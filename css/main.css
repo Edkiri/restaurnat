@@ -21,3 +21,6 @@ label {
   /* This is a color variable defined by bootstrap */
   color: var(--bs-body-bg);
 }
+.cart-toggle-button-container {
+  max-height: 134px;
+}
